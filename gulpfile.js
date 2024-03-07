@@ -26,17 +26,21 @@ function scripts(){
 }
 
 function styles(){
-    return src('app/scss/style.scss')
+    // return src('app/scss/style.scss')
+    return src('app/scss/**/*.scss')
         .pipe(concat('style.min.css'))
-        .pipe(scss({outputStyle: 'compressed'}))
+        // .pipe(scss({outputStyle: 'compressed'}))
+        .pipe(scss({outputStyle: 'expanded'}))
         // .pipe(autoprefixer({ overrideBrowserslist: ['last 5 version']})) /*nie rabotayet */
         .pipe(dest('app/css'))
         .pipe(browserSync.stream())
 }
 
 function watching(){
-    watch(['app/scss/style.scss'], styles)
-    watch(['app/js/main.js'], scripts)
+    // watch(['app/scss/style.scss'], styles)
+    watch(['app/scss/**/*.scss'], styles)
+    // watch(['app/js/main.js'], scripts)
+    watch(['app/js/*.js'], scripts)
     watch(['app/*.html']).on('change', browserSync.reload);
 }
 
