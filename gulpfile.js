@@ -17,7 +17,8 @@ const clean = require('gulp-clean');
 
 function scripts(){
     return src([
-        'app/js/main.js'
+        'app/js/main.js',
+        'node_modules/mixitup/dist/mixitup.js'
     ])
     .pipe(concat('main.min.js'))
     .pipe(uglify())
